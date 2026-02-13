@@ -1,153 +1,118 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fernanda ❤️</title>
+<title>Para Minha Princesa</title>
 
 <style>
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
     color: white;
-    min-height: 100vh;
-    background: linear-gradient(135deg, black, #2a004f, #ff2e88);
+    scroll-behavior: smooth;
+}
+
+section {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    text-align: center;
+    padding: 20px;
 }
 
-/* Caixa principal */
-.container {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 25px;
-    max-width: 600px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px #ff2e88;
-}
-
-/* Título */
 h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
+    font-size: 40px;
 }
 
-/* Texto */
-p {
+.contador {
+    display: flex;
+    gap: 30px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+button {
+    padding: 15px 30px;
     font-size: 18px;
-    line-height: 1.6;
+    border: none;
+    border-radius: 30px;
+    background: #ff4b8b;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 
-/* Contador fofo */
-.counter {
-    margin-top: 25px;
-    font-size: 22px;
-    background: linear-gradient(45deg, #ff2e88, #a100ff);
-    padding: 15px;
-    border-radius: 20px;
-    box-shadow: 0 0 15px pink;
-}
-
-/* Corações animados */
-.heart {
-    position: absolute;
-    color: pink;
-    font-size: 22px;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10vh); opacity: 1; }
-    100% { transform: translateY(110vh); opacity: 0; }
-}
-
-/* Gatinhos flutuando */
-.cat {
-    position: absolute;
-    font-size: 28px;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+button:hover {
+    background: #ff1e6f;
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>Fernanda ❤️</h1>
-    <p>
-        Desde o dia 3 de dezembro, tudo mudou.<br><br>
-        A gente ficou juntos pela primeira vez na escola…<br>
-        Foi algo simples, mas ficou marcado pra sempre em mim.<br><br>
-        Mesmo depois conversando pouco, eu nunca deixei de gostar de você.<br>
-        Você é tão linda… e tem o sorriso mais perfeito que eu já vi.
-    </p>
+<!-- Página 1 -->
+<section>
+    <h1>Para Minha Princesa 💜</h1>
+    <p>Desde o nosso primeiro beijo, tudo mudou…</p>
+</section>
 
-    <div class="counter" id="contador"></div>
-</div>
+<!-- Página 2 -->
+<section>
+    <h1>Estamos juntos há:</h1>
+    <div class="contador">
+        <div class="box">
+            <div id="dias"></div>
+            <div>Dias</div>
+        </div>
+    </div>
+</section>
 
-<!-- Música tocando automaticamente -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/embed/6CrCzrgejqs?autoplay=1&loop=1&playlist=6CrCzrgejqs"
-frameborder="0"
-allow="autoplay">
-</iframe>
+<!-- Página 3 -->
+<section>
+    <h1>03/12/2025 💋</h1>
+    <p>O dia do nosso primeiro beijo.<br>
+    O começo da nossa história.<br>
+    E o melhor dia da minha vida.</p>
+</section>
+
+<!-- Página 4 -->
+<section>
+    <h1>Eu te amo ❤️</h1>
+    <p>Que venham muitos meses, anos e uma vida inteira ao seu lado.</p>
+    <button onclick="tocarMusica()">Tocar Música 🎵</button>
+</section>
+
+<audio id="musica" src="musica.mp3"></audio>
 
 <script>
-// DATA DE INÍCIO
-const dataInicio = new Date("2024-12-03T00:00:00");
-
 function atualizarContador() {
-    const agora = new Date();
-    const diff = agora - dataInicio;
-
+    const inicio = new Date("2025-12-03");
+    const hoje = new Date();
+    const diff = hoje - inicio;
     const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diff / (1000 * 60)) % 60);
-    const segundos = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("contador").innerHTML =
-        `💜 Estamos juntos há 💜<br>
-        <strong>${dias}</strong> dias 💗 
-        <strong>${horas}</strong> horas 💕 
-        <strong>${minutos}</strong> minutos 💖 
-        <strong>${segundos}</strong> segundos`;
+    document.getElementById("dias").innerText = dias;
 }
 
-setInterval(atualizarContador, 1000);
-
-// Criar corações caindo
-function criarCoracao() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+function tocarMusica() {
+    document.getElementById("musica").play();
 }
 
-setInterval(criarCoracao, 300);
+atualizarContador();
+</script>
 
-// Criar gatinhos
-for (let i = 0; i < 6; i++) {
-    const cat = document.createElement("div");
-    cat.classList.add("cat");
-    cat.innerHTML = "🐱";
-    cat.style.left = Math.random() * 100 + "vw";
-    cat.style.top = Math.random() * 80 + "vh";
-    document.body.appendChild(cat);
+</body>
+</html>    document.body.appendChild(cat);
 }
 </script>
 
