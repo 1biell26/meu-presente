@@ -1,59 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Nosso Amor ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernanda ❤️</title>
+
 <style>
 body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-  text-align:center;
-  color:white;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    background: linear-gradient(135deg, black, #2a004f, #ff2e88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
+
+/* Caixa principal */
 .container {
-  margin-top:50px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 25px;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px #ff2e88;
 }
+
+/* Título */
 h1 {
-  font-size:40px;
+    font-size: 38px;
+    margin-bottom: 10px;
 }
+
+/* Texto */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Contador fofo */
 .counter {
-  font-size:28px;
-  margin-top:20px;
+    margin-top: 25px;
+    font-size: 22px;
+    background: linear-gradient(45deg, #ff2e88, #a100ff);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px pink;
 }
-img {
-  width:250px;
-  border-radius:20px;
-  margin-top:20px;
+
+/* Corações animados */
+.heart {
+    position: absolute;
+    color: pink;
+    font-size: 22px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* Gatinhos flutuando */
+.cat {
+    position: absolute;
+    font-size: 28px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
 }
 </style>
 </head>
+
 <body>
+
 <div class="container">
-<h1>Eu te amo ❤️</h1>
-<p>Desde o dia 01/01/2024 minha vida mudou completamente...</p>
+    <h1>Fernanda ❤️</h1>
+    <p>
+        Desde o dia 3 de dezembro, tudo mudou.<br><br>
+        A gente ficou juntos pela primeira vez na escola…<br>
+        Foi algo simples, mas ficou marcado pra sempre em mim.<br><br>
+        Mesmo depois conversando pouco, eu nunca deixei de gostar de você.<br>
+        Você é tão linda… e tem o sorriso mais perfeito que eu já vi.
+    </p>
 
-<img src="https://via.placeholder.com/250" alt="Nossa foto">
-
-<div class="counter" id="contador"></div>
+    <div class="counter" id="contador"></div>
 </div>
 
+<!-- Música tocando automaticamente -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/6CrCzrgejqs?autoplay=1&loop=1&playlist=6CrCzrgejqs"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
 <script>
-const dataInicio = new Date("2024-01-01");
+// DATA DE INÍCIO
+const dataInicio = new Date("2024-12-03T00:00:00");
 
 function atualizarContador() {
-  const agora = new Date();
-  const diferenca = agora - dataInicio;
+    const agora = new Date();
+    const diff = agora - dataInicio;
 
-  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diff / (1000 * 60)) % 60);
+    const segundos = Math.floor((diff / 1000) % 60);
 
-  document.getElementById("contador").innerHTML =
-    `Estamos juntos há ${dias} dias, ${horas} horas e ${minutos} minutos ❤️`;
+    document.getElementById("contador").innerHTML =
+        `💜 Estamos juntos há 💜<br>
+        <strong>${dias}</strong> dias 💗 
+        <strong>${horas}</strong> horas 💕 
+        <strong>${minutos}</strong> minutos 💖 
+        <strong>${segundos}</strong> segundos`;
 }
 
 setInterval(atualizarContador, 1000);
+
+// Criar corações caindo
+function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(criarCoracao, 300);
+
+// Criar gatinhos
+for (let i = 0; i < 6; i++) {
+    const cat = document.createElement("div");
+    cat.classList.add("cat");
+    cat.innerHTML = "🐱";
+    cat.style.left = Math.random() * 100 + "vw";
+    cat.style.top = Math.random() * 80 + "vh";
+    document.body.appendChild(cat);
+}
 </script>
 
 </body>
