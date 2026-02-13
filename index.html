@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nosso Amor ❤️</title>
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  text-align:center;
+  color:white;
+}
+.container {
+  margin-top:50px;
+}
+h1 {
+  font-size:40px;
+}
+.counter {
+  font-size:28px;
+  margin-top:20px;
+}
+img {
+  width:250px;
+  border-radius:20px;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Eu te amo ❤️</h1>
+<p>Desde o dia 01/01/2024 minha vida mudou completamente...</p>
+
+<img src="https://via.placeholder.com/250" alt="Nossa foto">
+
+<div class="counter" id="contador"></div>
+</div>
+
+<script>
+const dataInicio = new Date("2024-01-01");
+
+function atualizarContador() {
+  const agora = new Date();
+  const diferenca = agora - dataInicio;
+
+  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+
+  document.getElementById("contador").innerHTML =
+    `Estamos juntos há ${dias} dias, ${horas} horas e ${minutos} minutos ❤️`;
+}
+
+setInterval(atualizarContador, 1000);
+</script>
+
+</body>
+</html>
